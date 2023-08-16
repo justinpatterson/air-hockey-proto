@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Save_Phase : AirHockeyPhase
+public class Serve_Phase : AirHockeyPhase
 {
     public override void StartPhase()
     {
@@ -24,7 +24,7 @@ public class Save_Phase : AirHockeyPhase
     }
     private void OnPuckHit(Collision collision)
     {
-        if (collision.gameObject.name == "PF_Striker" && collision.gameObject.GetComponentInParent<MCS.Player.StrikerMovementController>()) 
+        if (collision.gameObject.GetComponentInParent<AirHockey.Player.StrikerMovementController>()) 
         {
             //eventually test which player hit, and who should currently be serving
             _airHockeyManager?.DoPhaseTransition(AirHockeyManager.GamePhases.InProgress);

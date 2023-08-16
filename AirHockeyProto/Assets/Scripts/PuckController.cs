@@ -28,6 +28,7 @@ public class PuckController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collision!");
         OnCollisionDelegate?.Invoke(collision);
     }
 
@@ -36,7 +37,7 @@ public class PuckController : MonoBehaviour
         rb.velocity = new Vector3(0f, 0f, 0f);
         rb.angularVelocity = new Vector3(0f, 0f, 0f);
         transform.rotation = Quaternion.identity;
-        transform.position = new Vector3(0f, 0.3608f, 0f); //NOTE - This should become some constant variable in Globals class or perhaps a tagged object on the Table
+        transform.position = new Vector3(0f, 0f, 0f); //NOTE - This should become some constant variable in Globals class or perhaps a tagged object on the Table
     }
 
 }

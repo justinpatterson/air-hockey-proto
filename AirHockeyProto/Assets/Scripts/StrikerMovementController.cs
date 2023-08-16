@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MCS.Player
+namespace AirHockey.Player
 {
     public class StrikerMovementController : MonoBehaviour
     {
