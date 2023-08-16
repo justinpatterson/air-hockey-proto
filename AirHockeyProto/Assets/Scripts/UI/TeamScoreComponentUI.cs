@@ -1,10 +1,11 @@
 using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public class TeamScoreComponentUI 
 {
-    public Text teamNameText;
-    public Text scoreText;
+    public TMPro.TextMeshProUGUI teamNameText;
+    public TMPro.TextMeshProUGUI scoreText;
     string _team, _score;
     public void UpdateScore(int score) 
     {
