@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MCS.Player {
-    public class PlayerAvatar : MonoBehaviour
+    public class PlayerAvatarIKController : MonoBehaviour
     {
         [SerializeField]
-        PlayerController pc;
+        StrikerMovementController pc;
         [SerializeField]
         Transform avatar_torso;
         [SerializeField]
@@ -48,6 +48,21 @@ namespace MCS.Player {
                         animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
                         animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
                         animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
+
+                        /* //option 1, some blend of rotation calcs between up/down and left/right movement
+                        float strikerZ = rightHandObj.transform.position.z;
+                        strikerZ = Mathf.Abs(strikerZ); //the farther from 0, the closer to Rotation Y of 0f; 
+                        float strikerX = rightHandObj.transform.position.x;
+                        float maxCenterDistanceZ = 0.36f; //get from table info 
+                        float maxCenterDistanceX = 0.18f; //get from table info
+                        float targetYRot = Mathf.Lerp(0f,-90f, (maxCenterDistanceZ - strikerZ)/(0.36f));
+                        strikerX = Mathf.Clamp(strikerX, -maxCenterDistanceX, 0f); //Debug.Log(strikerX);
+                        float xPercent = Mathf.Abs(strikerX/maxCenterDistanceX); Debug.Log(xPercent);
+                        targetYRot = Mathf.Min(targetYRot, Mathf.Lerp(0f, -90f, xPercent));
+                        transform.localRotation = Quaternion.Euler(0f, targetYRot, 0f);
+                        */
+                        transform.right = (rightHandObj.transform.position - transform.position).normalized;
+
                     }
 
                 }
@@ -65,19 +80,19 @@ namespace MCS.Player {
 
         private void Update()
         {
-            /*
-            if (pc?.GetPuck()) 
+            
+            if (pc?.puckTarget) 
             {
                 Vector3 targetTorsoPos = new Vector3
                 (
-                    pc.GetPuck().position.x,
+                    pc.puckTarget.transform.position.x,
                     avatar_torso.position.y,
                     avatar_torso.position.z
                 );
                 Vector3 nextTorsoPos = Vector3.Lerp(avatar_torso.position, targetTorsoPos, speed);
                 avatar_torso.position = nextTorsoPos;
             }
-            */
+            
         }
     }
 }

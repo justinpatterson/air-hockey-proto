@@ -626,6 +626,22 @@ PrefabInstance:
       propertyPath: puck
       value: 
       objectReference: {fileID: 1153101803}
+    - target: {fileID: 9151485178120277342, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
+      propertyPath: tableInfo.xBounds.x
+      value: -2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151485178120277342, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
+      propertyPath: tableInfo.xBounds.y
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151485178120277342, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
+      propertyPath: tableInfo.zBounds.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151485178120277342, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
+      propertyPath: tableInfo.zBounds.y
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
