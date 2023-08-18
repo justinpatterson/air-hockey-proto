@@ -1998,6 +1998,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7123982722604598187, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
+      propertyPath: speed
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123982722604598187, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
       propertyPath: table
       value: 
       objectReference: {fileID: 1075251390}
@@ -2869,10 +2873,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table
       objectReference: {fileID: 0}
-    - target: {fileID: 8316848954361346292, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8316848954361346293, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2921,22 +2921,6 @@ PrefabInstance:
       propertyPath: puck
       value: 
       objectReference: {fileID: 1153101803}
-    - target: {fileID: 9151485178120277342, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
-      propertyPath: tableInfo.xBounds.x
-      value: -2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9151485178120277342, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
-      propertyPath: tableInfo.xBounds.y
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9151485178120277342, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
-      propertyPath: tableInfo.zBounds.x
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9151485178120277342, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}
-      propertyPath: tableInfo.zBounds.y
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 351379e383bee2b41a02d0b29f76f37c, type: 3}

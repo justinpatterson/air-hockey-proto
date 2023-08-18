@@ -473,7 +473,7 @@ Transform:
   - {fileID: 7367587718721759626}
   - {fileID: 2620589830894817073}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9151485178120277342
 MonoBehaviour:
@@ -488,11 +488,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tableInfo:
-    xBounds: {x: 0, y: 0}
-    zBounds: {x: 0, y: 0}
+    xBounds: {x: -2.1, y: 2.1}
+    zBounds: {x: -4, y: 4}
   arenaCollider: {fileID: 0}
   puck: {fileID: 0}
-  wallDistanceThreshold: 0.05
+  wallDistanceThreshold: 0.5
   wallPushStrength: 1
 --- !u!1 &8316848954961049858
 GameObject:
