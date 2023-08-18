@@ -17,6 +17,19 @@ public class InProgress_Phase : AirHockeyPhase
         _airHockeyManager?.DoPhaseTransition(AirHockeyManager.GamePhases.Score);
     }
 
+    public override void UpdatePhase()
+    {
+        base.UpdatePhase();
+        if (_airHockeyManager == null)
+            return;
+        if (_airHockeyManager.currentPhase == AirHockeyManager.GamePhases.InProgress)
+        {
+            _airHockeyManager.teamModel.timeRemaining -= Time.deltaTime;
+            if(_airHockeyManager.teamModel.timeRemaining <= 0f)
+                _airHockeyManager.DoPhaseTransition(AirHockeyManager.GamePhases.GameOver);
+        }
+    }
+
     public override void EndPhase()
     {
         if (_active)

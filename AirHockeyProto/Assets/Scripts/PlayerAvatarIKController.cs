@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AirHockey.Player {
     public class PlayerAvatarIKController : MonoBehaviour
     {
         [SerializeField]
@@ -35,19 +34,21 @@ namespace AirHockey.Player {
                     // Set the look target position, if one has been assigned
                     if (lookObj != null)
                     {
+                        /*
                         animator.SetLookAtWeight(1);
                         animator.SetLookAtPosition(lookObj.position);
-                        
+                        */
                     }
 
                     // Set the right hand target position and rotation, if one has been assigned
                     if (rightHandObj != null)
                     {
                         //Debug.Log("Attempting to IK...");
-                        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                        animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                        animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
-                        animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
+
+                        animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+                        animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+                        animator.SetIKPosition(AvatarIKGoal.LeftHand, rightHandObj.position);
+                        animator.SetIKRotation(AvatarIKGoal.LeftHand, rightHandObj.rotation);
 
                         /* //option 1, some blend of rotation calcs between up/down and left/right movement
                         float strikerZ = rightHandObj.transform.position.z;
@@ -61,7 +62,8 @@ namespace AirHockey.Player {
                         targetYRot = Mathf.Min(targetYRot, Mathf.Lerp(0f, -90f, xPercent));
                         transform.localRotation = Quaternion.Euler(0f, targetYRot, 0f);
                         */
-                        transform.right = (rightHandObj.transform.position - transform.position).normalized;
+
+                        //transform.right = (rightHandObj.transform.position - transform.position).normalized;
 
                     }
 
@@ -80,7 +82,8 @@ namespace AirHockey.Player {
 
         private void Update()
         {
-            
+         
+            /*
             if (pc?.puckTarget) 
             {
                 Vector3 targetTorsoPos = new Vector3
@@ -92,7 +95,6 @@ namespace AirHockey.Player {
                 Vector3 nextTorsoPos = Vector3.Lerp(avatar_torso.position, targetTorsoPos, speed);
                 avatar_torso.position = nextTorsoPos;
             }
-            
+            */
         }
     }
-}

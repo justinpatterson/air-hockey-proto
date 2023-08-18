@@ -12,6 +12,10 @@ public class Reset_Phase : AirHockeyPhase
 
         PuckController puck = GameObject.FindObjectOfType<PuckController>();
         puck.Reset();
+        
+        StrikerMovementController[] strikers = GameObject.FindObjectsOfType<StrikerMovementController>();
+        foreach (StrikerMovementController s in strikers)
+            s.Reset();
 
         //turn puck back on
         _airHockeyManager.DoPhaseTransition(AirHockeyManager.GamePhases.Serve);

@@ -24,7 +24,10 @@ public class AirHockeyManager : MonoBehaviour
         {
             teamL.score = 0;
             teamR.score = 0;
+            timeRemaining = 240f;
         }
+
+        public float timeRemaining;
     }
     [SerializeField]
     public AirHockeyModel teamModel;
@@ -91,22 +94,41 @@ public class AirHockeyManager : MonoBehaviour
     private void Update()
     {
         _currentPhaseLogic?.UpdatePhase();
+        
+
     }
+    int _servingTeamIndex = -1;
     public void ReportGoalScoredOnTeam(int teamGoalIndex) 
     {
         switch (teamGoalIndex) 
         {
             case 0: //left goal triggered, so right team gains
                 teamModel.teamR.score++;
+                _servingTeamIndex = 0;
                 break;
             case 1: //right goal triggered, so right team gains
                 teamModel.teamL.score++;
+                _servingTeamIndex = 1;
                 break;
             default:
+                _servingTeamIndex = 0;
                 //maybe -1, scored on no one
                 break;
         }
         OnAirHockeyScoreUpdated?.Invoke(teamModel);
+    }
+    public bool IsValidServe(int playerIndex) 
+    {
+        int teamIndex = GetTeamIndexForPlayer(playerIndex);
+        //Debug.Log("Player " + playerIndex + " on team " + teamIndex + " hit puck, valid person is " + _servingTeamIndex);
+        return teamIndex == _servingTeamIndex || _servingTeamIndex == -1;
+
+    }
+    public int GetTeamIndexForPlayer(int playerIndex) 
+    {
+        if (teamModel.teamL.playerIDs.Contains(playerIndex)) { return 0; }
+        else if (teamModel.teamR.playerIDs.Contains(playerIndex)) { return 1; }
+        else return -1;
     }
     public bool IsGameOver() 
     {

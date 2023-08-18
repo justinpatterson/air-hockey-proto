@@ -13,7 +13,8 @@ public class Serve_Phase : AirHockeyPhase
 
     public override void EndPhase()
     {
-        if(_active) 
+        _speedListener = false;
+        if (_active) 
             PuckController.OnCollisionDelegate -= OnPuckHit;
         base.EndPhase();
     }
@@ -22,12 +23,37 @@ public class Serve_Phase : AirHockeyPhase
         if (_active)
             PuckController.OnCollisionDelegate -= OnPuckHit;
     }
+    bool _speedListener = false;
     private void OnPuckHit(Collision collision)
     {
-        if (collision.gameObject.GetComponentInParent<AirHockey.Player.StrikerMovementController>()) 
+        if (_airHockeyManager == null)
+            return;
+        //Debug.Log("HIT");
+        if (collision.gameObject.GetComponentInParent<StrikerMovementController>()) 
         {
-            //eventually test which player hit, and who should currently be serving
-            _airHockeyManager?.DoPhaseTransition(AirHockeyManager.GamePhases.InProgress);
+            StrikerMovementController smc = collision.gameObject.GetComponentInParent<StrikerMovementController>();
+
+            if (_airHockeyManager.IsValidServe(smc.playerIndex))
+            {
+                _speedListener = true;
+            }
+            else
+            {
+                Debug.Log("PENALTY");
+                _airHockeyManager?.DoPhaseTransition(AirHockeyManager.GamePhases.ResetPuck); //reset isn't actually resetting consistently for some reason.  Why?
+            }
         }
+    }
+    public override void UpdatePhase()
+    {
+        base.UpdatePhase();
+        if (_speedListener) 
+        {
+            if(PuckController.lastPuckSpeed >= 0.3f)
+            {
+                _airHockeyManager?.DoPhaseTransition(AirHockeyManager.GamePhases.InProgress);
+            }
+        }
+
     }
 }

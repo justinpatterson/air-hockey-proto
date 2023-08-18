@@ -7,7 +7,7 @@ public class AirHockeyUIManager : MonoBehaviour
 {
     public AirHockeyManager _airHockeyManager;
 
-    public UIPanel scorePanel, gameOverPanel;
+    public UIPanel scorePanel, gameOverPanel, timerPanel;
 
     private void Awake()
     {
@@ -29,11 +29,13 @@ public class AirHockeyUIManager : MonoBehaviour
         {
             case AirHockeyManager.GamePhases.GameOver:
                 gameOverPanel.OpenPanel();
+                timerPanel.ClosePanel();
                 scorePanel.ClosePanel();
                 break;
             default:
                 gameOverPanel.ClosePanel();
                 scorePanel.OpenPanel();
+                timerPanel.OpenPanel();
                 break;
         
         }

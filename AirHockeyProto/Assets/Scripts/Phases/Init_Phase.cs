@@ -13,6 +13,7 @@ public class Init_Phase : AirHockeyPhase
 
         _airHockeyManager.teamModel.Reset();
         _airHockeyManager.ReportGoalScoredOnTeam(-1); //this will force all score UI to reset
+        _airHockeyManager.teamModel.timeRemaining = 240f;
         _airHockeyManager.DoPhaseTransition(AirHockeyManager.GamePhases.Serve);
 
 

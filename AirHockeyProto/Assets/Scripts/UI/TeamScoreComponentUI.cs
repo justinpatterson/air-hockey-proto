@@ -4,8 +4,8 @@ using TMPro;
 [System.Serializable]
 public class TeamScoreComponentUI 
 {
-    public TMPro.TextMeshProUGUI teamNameText;
-    public TMPro.TextMeshProUGUI scoreText;
+    public TextMeshProUGUI teamNameText;
+    public TextMeshProUGUI scoreText;
     string _team, _score;
     public void UpdateScore(int score) 
     {
