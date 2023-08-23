@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class PuckController : MonoBehaviour
 {
-    [SerializeField]
-    [Range(0f, 5f)]
-    float _maxSpeed = 2.5f;
-
-
     Rigidbody rb;
     
     public delegate void OnCollisionEvent(Collision collision);
@@ -23,7 +18,7 @@ public class PuckController : MonoBehaviour
     {
         if (rb && rb.isKinematic == false) //rb.isKinematic is controlled by Grabbing behaviors of strikers 
         {
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, _maxSpeed);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, AirHockeyGlobals.PuckSettings.maxSpeed);
             lastPuckSpeed = rb.velocity.magnitude;
         }
     }
@@ -44,9 +39,9 @@ public class PuckController : MonoBehaviour
 
     public void Grab(bool isGrabbed, StrikerMovementController strikerPlayer) 
     {
-        rb.velocity = Vector3.zero; //when I ungrab, we likely need to do something so they don't immediately bump against the striker
         rb.isKinematic = isGrabbed;
         //I think I'll do follow behaviors in StrikerMovementController;
+        rb.velocity = Vector3.zero; //when I ungrab, we likely need to do something so they don't immediately bump against the striker
     }
     public void GrabMove(Vector3 targetPosition) 
     {

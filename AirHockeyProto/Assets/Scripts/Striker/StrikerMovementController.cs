@@ -15,14 +15,13 @@ public class StrikerMovementController : MonoBehaviour
         
     Collider _rbCollider;
 
-    public PlayerAvatarIKController avatar;
+    //public PlayerAvatarIKController avatar;
     public TableController table;
     public PuckController puckTarget;
     public AirHockeyManager airHockeyManager;
 
     //goalie mode considerations
     public Transform mallet_mesh; //a child of the rigidbody, we can raise and lower it for "goalie" mode without changing physics
-    public float goalieModeLiftAmt = 0.02f;
     bool _goalieMode = false;
     bool _goalieGrab = false;
     public Transform GetStriker() { return rb.transform; }
@@ -95,7 +94,7 @@ public class StrikerMovementController : MonoBehaviour
         _goalieMode = isGoalieMode;
         if(_rbCollider != null)
             _rbCollider.isTrigger = _goalieMode; //now when the puck hits it, we can "grab" it
-        mallet_mesh.localPosition = Vector3.up * (_goalieMode ? goalieModeLiftAmt : 0f);
+        mallet_mesh.localPosition = Vector3.up * (_goalieMode ? AirHockeyGlobals.PlayerStrikerSettings.goalieModeLiftAmt : 0f);
 
         if (_goalieGrab)
             SetGoalieGrab(false);
@@ -122,9 +121,9 @@ public class StrikerMovementController : MonoBehaviour
         }
         else if (_goalieMode && _goalieGrab)
         {
-            Vector3 grabNodePos = _rbCollider.transform.position + this.transform.forward * 1.1f;
+            Vector3 grabNodePos = _rbCollider.transform.position + this.transform.forward * _grabObjectForwardOffset;
             puckTarget.GrabMove(grabNodePos);
         }
     }
-
+    float _grabObjectForwardOffset = 0.05f;
 }

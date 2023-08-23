@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace MCS.Player {
     public class PlayerAvatarIKController : MonoBehaviour
     {
         [SerializeField]
@@ -98,3 +99,4 @@ using UnityEngine;
             */
         }
     }
+}

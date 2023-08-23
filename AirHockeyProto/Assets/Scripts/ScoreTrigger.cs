@@ -10,10 +10,14 @@ public class ScoreTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+#if UNITY_EDITOR
         Debug.Log("Triggered score zone ... " + other.gameObject.name);
+#endif
         if (other.CompareTag("Puck") && other.GetComponent<PuckController>())
         {
+#if UNITY_EDITOR
             Debug.Log("Invoking Score Zone... ");
+#endif
             OnScoreTriggerEvent?.Invoke(teamIndex);
         }
     }

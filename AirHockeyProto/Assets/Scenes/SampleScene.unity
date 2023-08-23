@@ -2434,6 +2434,7 @@ MonoBehaviour:
   - phase: 7
     phaseLogic: {fileID: 2078084045}
   currentPhase: 0
+  _servingTeamIndex: -1
 --- !u!4 &2079799250
 Transform:
   m_ObjectHideFlags: 0
@@ -2679,33 +2680,25 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 526008483150164430, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
-      propertyPath: lookObj
+    - target: {fileID: 800107724, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
+      propertyPath: table
       value: 
-      objectReference: {fileID: 1153101803}
-    - target: {fileID: 1332954811596555750, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1332954811596555750, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1332954811596555750, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1332954811596555750, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1075251390}
+    - target: {fileID: 800107724, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
+      propertyPath: rayCam
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 800107724, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
+      propertyPath: puckTarget
+      value: 
+      objectReference: {fileID: 5024472735102939312}
+    - target: {fileID: 800107724, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
+      propertyPath: airHockeyManager
+      value: 
+      objectReference: {fileID: 2079799249}
     - target: {fileID: 1983460229205301588, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1983460229205301588, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4628312080257942146, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
       propertyPath: m_RootOrder
@@ -2751,18 +2744,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7123982722604598187, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
-      propertyPath: table
-      value: 
-      objectReference: {fileID: 1075251390}
-    - target: {fileID: 7123982722604598187, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
-      propertyPath: rayCam
-      value: 
-      objectReference: {fileID: 963194227}
-    - target: {fileID: 7123982722604598187, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
-      propertyPath: puckTarget
-      value: 
-      objectReference: {fileID: 5024472735102939312}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 72dd91de98b64ae4dae897b0947d75c9, type: 3}
@@ -2978,20 +2959,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1983460228624094896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ab140ebd7cce942bd488fdb46236e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 50b1a765162808241b0b7ca00bc0f051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 370450169}
-  rayCam: {fileID: 0}
-  speed: 0.08
+  rayCam: {fileID: 963194227}
+  speed: 2
   playerIndex: 1
-  isAI: 1
-  avatar: {fileID: 0}
   table: {fileID: 1075251390}
   puckTarget: {fileID: 5024472735102939312}
   airHockeyManager: {fileID: 2079799249}
   mallet_mesh: {fileID: 2091362895}
-  goalieModeLiftAmt: 0.5
+  _aiServeCountdown: 1
+  _distanceExpander: 0
 --- !u!1001 &8316848954129070770
 PrefabInstance:
   m_ObjectHideFlags: 0

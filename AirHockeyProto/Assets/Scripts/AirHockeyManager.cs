@@ -97,6 +97,7 @@ public class AirHockeyManager : MonoBehaviour
         
 
     }
+    [SerializeField]
     int _servingTeamIndex = -1;
     public void ReportGoalScoredOnTeam(int teamGoalIndex) 
     {

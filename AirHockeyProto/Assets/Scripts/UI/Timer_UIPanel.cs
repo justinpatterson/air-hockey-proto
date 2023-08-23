@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
 public class Timer_UIPanel : UIPanel
 {
     AirHockeyManager _airHockeyManager;
@@ -16,8 +15,6 @@ public class Timer_UIPanel : UIPanel
     }
     private void Update()
     {
-        if (countdownText == null)
-            return;
         if (_airHockeyManager)
         {
             float timeRemaining = Mathf.Clamp(_airHockeyManager.teamModel.timeRemaining, 0f, 1000f);

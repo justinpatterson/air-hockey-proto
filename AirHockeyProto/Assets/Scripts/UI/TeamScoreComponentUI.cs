@@ -1,6 +1,5 @@
 using UnityEngine.UI;
 using TMPro;
-
 [System.Serializable]
 public class TeamScoreComponentUI 
 {

@@ -5,10 +5,26 @@ using UnityEngine;
 
 public class InProgress_Phase : AirHockeyPhase
 {
+    public static int PenaltyPlayerIndex = -1;
+
     public override void StartPhase()
     {
         base.StartPhase();
-        ScoreTrigger.OnScoreTriggerEvent += OnScore;
+
+        if (PenaltyPlayerIndex != -1) 
+        {
+            TriggerPenalty();
+        }
+        else
+        {
+            ScoreTrigger.OnScoreTriggerEvent += OnScore;
+        }
+    }
+
+    void TriggerPenalty() 
+    {
+        Debug.Log("SHOULD RESET...");
+        _airHockeyManager?.DoPhaseTransition(AirHockeyManager.GamePhases.ResetPuck);
     }
 
     private void OnScore(int teamGoal)
@@ -34,6 +50,7 @@ public class InProgress_Phase : AirHockeyPhase
     {
         if (_active)
             ScoreTrigger.OnScoreTriggerEvent -= OnScore;
+        PenaltyPlayerIndex = -1;
         base.EndPhase();
     }
     private void OnDestroy()

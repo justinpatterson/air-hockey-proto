@@ -15,8 +15,6 @@ public class TableController : MonoBehaviour
 
     public Collider arenaCollider;
     public Transform puck;
-    public float wallDistanceThreshold = 0.05f;
-    public float wallPushStrength = 1f;
 
     private void FixedUpdate()
     {
@@ -46,7 +44,7 @@ public class TableController : MonoBehaviour
     {
         Vector3 dir = puck.transform.position - wallCenter;
         float dot = Vector3.Dot(dir, wallNormal);
-        if ((dot) < wallDistanceThreshold)
+        if ((dot) < AirHockeyGlobals.TableSettings.wallDistanceThreshold)
             return true;
         return false;
     }
@@ -160,7 +158,7 @@ public class TableController : MonoBehaviour
 
     void PuckForceBounce(Vector3 forceDir)
     {
-        puck.GetComponent<Rigidbody>().AddForce(forceDir * Time.deltaTime * wallPushStrength);//puck.position + (forceDir * Time.deltaTime));
+        puck.GetComponent<Rigidbody>().AddForce(forceDir * Time.deltaTime * AirHockeyGlobals.TableSettings.wallPushStrength);//puck.position + (forceDir * Time.deltaTime));
     }
 
     private void OnDrawGizmos()

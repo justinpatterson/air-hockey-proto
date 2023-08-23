@@ -28,6 +28,10 @@ public class Serve_Phase : AirHockeyPhase
     {
         if (_airHockeyManager == null)
             return;
+
+        if (_speedListener == true)
+            return;
+
         //Debug.Log("HIT");
         if (collision.gameObject.GetComponentInParent<StrikerMovementController>()) 
         {
@@ -39,8 +43,10 @@ public class Serve_Phase : AirHockeyPhase
             }
             else
             {
+                _speedListener = true;
                 Debug.Log("PENALTY");
-                _airHockeyManager?.DoPhaseTransition(AirHockeyManager.GamePhases.ResetPuck); //reset isn't actually resetting consistently for some reason.  Why?
+                InProgress_Phase.PenaltyPlayerIndex = smc.playerIndex;
+                //_airHockeyManager?.DoPhaseTransition(AirHockeyManager.GamePhases.ResetPuck); //reset isn't actually resetting consistently for some reason.  Why?
             }
         }
     }
